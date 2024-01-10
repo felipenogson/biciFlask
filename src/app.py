@@ -1,0 +1,1 @@
+from biciflask import app
