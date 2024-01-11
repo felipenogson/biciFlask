@@ -141,3 +141,4 @@ cython_debug/
 # Others
 .DS_Store
 Thumbs.db
+src/biciflask/templates/bootstrap-5.3.2-examples/
