@@ -1,1 +1,10 @@
-.border-dashed { --bs-border-style: dashed; }
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+.border-dashed { 
+  --bs-border-style: dashed; 
+}
+
+.time {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 3em;
+}
