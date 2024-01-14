@@ -1,4 +1,3 @@
-console.log('hola mundo')
 let startTime;
 let updatedTime;
 let difference;
@@ -43,5 +42,4 @@ function getShowTime() {
 
   document.getElementById('cronometro').innerHTML = hours + ':' + minutes + ':' + seconds;
 }
-document.getElementById('start').addEventListener('click', startTimer);
 
