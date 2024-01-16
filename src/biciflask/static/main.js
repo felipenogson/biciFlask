@@ -7,7 +7,7 @@ let running = false;
 function startTimer() {
   if (!running) {
     startTime = new Date().getTime();
-    tInterval = setInterval(getShowTime, 1);
+    tInterval = setInterval(getjShowTime, 1);
     running = true;
   }
 }
@@ -37,8 +37,7 @@ function getShowTime() {
   hours = (hours < 10) ? "0" + hours : hours;
   minutes = (minutes < 10) ? "0" + minutes : minutes;
   seconds = (seconds < 10) ? "0" + seconds : seconds;
-  milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds :
-    milliseconds;
+  milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
 
   document.getElementById('cronometro').innerHTML = hours + ':' + minutes + ':' + seconds;
 }
