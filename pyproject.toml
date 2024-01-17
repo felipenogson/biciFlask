@@ -2,7 +2,7 @@
 name = "biciflask"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Felipe Lopez <felipe@nogson.com>"]
 readme = "README.md"
 packages = [{include = "biciflask", from = "src"}]
 
