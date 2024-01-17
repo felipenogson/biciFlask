@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 import time
 
 app = Flask(__name__) 
@@ -14,7 +14,8 @@ def start():
 
 @app.route('/startTimer', methods=['POST'])
 def startTimer():
-    startTime = time.time_ns() / 1000000
+    print(request)
+    startTime = time.time_ns()
     return jsonify(startTime)
 
 @app.route('/stop')
