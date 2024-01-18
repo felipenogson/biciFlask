@@ -3,12 +3,17 @@ let updatedTime;
 let difference;
 let tInterval;
 let running = false;
+
+
 async function logRider(){
   const response = await fetch("startTimer", {method: 'POST'});
   const rider = await response.json();
-  startTime = Math.floor(rider/1000000)
+  startTime = Math.floor(rider)
+  window.localStorage.setItem('time', startTime)
   startTimer()
 }
+
+
 function startTimer() {
   if (!running) {
     // startTime = new Date().getTime();
