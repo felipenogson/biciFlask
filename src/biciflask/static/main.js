@@ -5,13 +5,26 @@ let tInterval;
 let running = false;
 
 
-async function logRider(){
+async function startRider(){
   const response = await fetch("startTimer", {method: 'POST'});
   const rider = await response.json();
-  startTime = Math.floor(rider)
-  window.localStorage.setItem('time', startTime)
+  startTime = Math.floor(rider['startTime'])
+  token = rider['token']
+  window.localStorage.setItem('startTime', startTime)
+  window.localStorage.setItem('token', token)
   startTimer()
 }
+
+function stopRider(){
+
+  startTime = window.localStorage.getItem('startTime')
+    // window.localStorage.setItem('startTime', startTime)
+    // const rider = await response.json();
+
+    startTimer()
+}
+
+
 
 
 function startTimer() {
@@ -26,7 +39,23 @@ function stopTimer() {
   if (running) {
     clearInterval(tInterval);
     running = false;
-  }
+
+    // Aqui es donde nos conectamos de nuevo con el servidor
+    fetch("stopTimer", {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(`${startTime}`)
+      }).then(response => response.json())
+      .then(data => {
+          console.log('Respuesta del servidor:', data);
+          // Puedes manejar la respuesta del servidor aquí
+      })
+      .catch(error => {
+          console.error('Error en la solicitud:', error);
+      });
+    }
 }
 
 function resetTimer() {

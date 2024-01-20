@@ -19,8 +19,15 @@ def start():
 @app.route('/startTimer', methods=['POST'])
 def startTimer():
     startTime = time.time_ns()/1000000
+    print(f'StartTime: {startTime}')
     access_token = create_access_token(identity=str(startTime))
-    return jsonify(access_token)
+    return jsonify({'token': access_token, 'startTime': startTime })
+
+@app.route('/stopTimer', methods=['POST'])
+def stopTimer():
+    data = request.get_json()
+    print(f"Debugiando con print: {data}")
+    return jsonify('ok')
 
 @app.route('/stop')
 def stop():
