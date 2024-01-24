@@ -3,6 +3,7 @@ let updatedTime;
 let difference;
 let tInterval;
 let running = false;
+let token 
 
 
 async function startRider(){
@@ -18,6 +19,7 @@ async function startRider(){
 function stopRider(){
 
   startTime = window.localStorage.getItem('startTime')
+  token = window.localStorage.getItem('token')
     // window.localStorage.setItem('startTime', startTime)
     // const rider = await response.json();
 
@@ -44,9 +46,14 @@ function stopTimer() {
     fetch("stopTimer", {
       method: 'POST',
       headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify(`${startTime}`)
+      // body: JSON.stringify(`${startTime}`)
+      body: JSON.stringify( {
+        startTime: startTime
+      }
+      )
       }).then(response => response.json())
       .then(data => {
           console.log('Respuesta del servidor:', data);
